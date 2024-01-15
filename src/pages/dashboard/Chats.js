@@ -139,6 +139,7 @@ const Chats = () => {
       sx={{
         position: "relative",
         width: "320px",
+
         backgroundColor:
           theme.palette.mode === "dark"
             ? theme.palette.background.paper
@@ -193,7 +194,7 @@ const Chats = () => {
               })}
             </Stack>
             <Stack spacing={2.4}>
-              <Typography variant="subtilte2" sx={{ color: "#676776" }}>
+              <Typography variant="subtilte2" p={1}   sx={{ color: "#676776" }}>
                 All Chats
               </Typography>
               {ChatList.filter((el) => !el.pinned).map((el) => {

@@ -9,14 +9,13 @@ const GeneralApp = () => {
     <Stack direction={"row"} sx={{ width: "100%" }}>
       {/* Chats */}
       <Chats />
-
       <Box
         sx={{
           height: "100%",
           width: "calc(100vw - 420px)",
           backgroundColor:
             theme.palette.mode === "light"
-              ? "#FFF"
+              ? "#f0f4fa"
               : theme.palette.background.default,
         }}
       >

@@ -1,28 +1,93 @@
 import React from "react";
-import { Divider, Stack, Typography, Box } from "@mui/material";
+import {
+  Divider,
+  Stack,
+  Typography,
+  Box,
+  Link,
+  IconButton,
+} from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { DownloadSimple, Image } from "phosphor-react";
 
+const DocMsg = ({ el }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8 = 12
+          width: "max-content",
+        }}
+      >
+        <Stack spacing={2}>
+          <Stack
+            p={2}
+            spacing={3}
+            direction={"row"}
+            alignItems={"center"}
+            sx={{
+              bgcolor: theme.palette.background.paper,
+              borderRadius: 1,
+            }}
+          >
+            <Image size={48} />
+            <Typography variant="caption">Abstract.png</Typography>
+            <IconButton>
+              <DownloadSimple />
+            </IconButton>
+          </Stack>
+          <Typography
+            variant="body2"
+            sx={{ color: el.incoming? theme.palette.text :"#fff" }}
+          >
+            {el.message}
+          </Typography>
+        </Stack>
+      </Box>
+    </Stack>
+  );
+};
 
-const MediaMsg = ({ el }) => {
-    const theme = useTheme();
-    return (
-      <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
-        <Box
-          p={1.5}
-          sx={{
-            backgroundColor: el.incoming
-              ? theme.palette.background.default
-              : theme.palette.primary.main,
-            borderRadius: 1.5, //1.5*8 = 12
-            width: "max-content",
-          }}
-        >
-          <Stack spacing={1}>
+const LinkMsg = ({ el }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8 = 12
+          width: "max-content",
+        }}
+      >
+        <Stack spacing={2}>
+          <Stack
+            p={2}
+            spacing={3}
+            alignItems={"flex-start"}
+            sx={{ bgcolor: theme.palette.background.paper, borderRadius: 1 }}
+          >
             <img
-              src={el.img}
+              src={el.preview}
               alt={el.message}
               style={{ maxHeight: 210, borderRadius: "10px" }}
             />
+            <Typography variant="subtitle2">Creating chat app</Typography>
+            <Typography
+              component={Link}
+              variant="subtitle2"
+              sx={{ color: theme.palette.primary.main }}
+              to="//https:www.google.com"
+            >
+              www.google.com
+            </Typography>
             <Typography
               variant="body2"
               color={el.incoming ? theme.palette.text : "#fff"}
@@ -30,10 +95,42 @@ const MediaMsg = ({ el }) => {
               {el.message}
             </Typography>
           </Stack>
-        </Box>
-      </Stack>
-    );
-  };
+        </Stack>
+      </Box>
+    </Stack>
+  );
+};
+const MediaMsg = ({ el }) => {
+  const theme = useTheme();
+  return (
+    <Stack direction={"row"} justifyContent={el.incoming ? "start" : "end"}>
+      <Box
+        p={1.5}
+        sx={{
+          backgroundColor: el.incoming
+            ? theme.palette.background.default
+            : theme.palette.primary.main,
+          borderRadius: 1.5, //1.5*8 = 12
+          width: "max-content",
+        }}
+      >
+        <Stack spacing={1}>
+          <img
+            src={el.img}
+            alt={el.message}
+            style={{ maxHeight: 210, borderRadius: "10px" }}
+          />
+          <Typography
+            variant="body2"
+            color={el.incoming ? theme.palette.text : "#fff"}
+          >
+            {el.message}
+          </Typography>
+        </Stack>
+      </Box>
+    </Stack>
+  );
+};
 
 const ReplyMsg = ({ el }) => {
   const theme = useTheme();
@@ -121,4 +218,4 @@ const Timeline = ({ el }) => {
   );
 };
 
-export { Timeline, TextMsg, MediaMsg, ReplyMsg };
+export { Timeline, TextMsg, MediaMsg, ReplyMsg, LinkMsg, DocMsg };

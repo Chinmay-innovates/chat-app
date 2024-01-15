@@ -76,7 +76,7 @@ const SideBar = () => {
                         ? "#000"
                         : theme.palette.text.primary,
                   }}
-                  key={el.index}
+                  // key={el.index}
                 >
                   {el.icon}
                 </IconButton>
