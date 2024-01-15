@@ -9,11 +9,11 @@ import { useTheme } from "@mui/material/styles";
 const Conversation = () => {
   const theme = useTheme();
   return (
-    <Stack height={"100%"} maxHeight={"100"} width={"auto"}>
+    <Stack height={"100vh"} maxHeight={"100"} width={"auto"}>
       {/* Chat Header */}
       <Header />
       {/* Msg */}
-      <Box width={"100%"} sx={{ flexGrow: 1 ,height:"100%",overflowY:"scroll" }}>
+      <Box width={"100%"} sx={{ flexGrow: 1 ,height:"100vh", width:"100%",overflowY:"scroll" }}>
         <Message />
       </Box>
       {/* Chat Footer */}
